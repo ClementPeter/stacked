@@ -66,7 +66,8 @@ class StartupView extends StackedView<StartupViewModel> {
                       ),
                     );
                   },
-                  onEnd: viewModel.runStartupLogic,         
+                  //Alternamtive to onViewModelReady
+                  onEnd: viewModel.runTimedStartupLogic,
                 )
               ],
             )
@@ -82,10 +83,10 @@ class StartupView extends StackedView<StartupViewModel> {
   ) =>
       StartupViewModel();
 
-  //onViewModelReady is used to run general function associated/ needed by it's view
-  @override
-  void onViewModelReady(StartupViewModel viewModel) {
-    SchedulerBinding.instance
-        .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
-  }
+  // //onViewModelReady is used to run general function associated/ needed by it's view
+  // @override
+  // void onViewModelReady(StartupViewModel viewModel) {
+  //   SchedulerBinding.instance
+  //       .addPostFrameCallback((timeStamp) => viewModel.runTimedStartupLogic());
+  // }
 }
