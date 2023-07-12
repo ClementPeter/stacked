@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:my_first_app/ui/common/app_colors.dart';
 import 'package:my_first_app/ui/common/ui_helpers.dart';
-
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -15,14 +14,12 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      //key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: kcBlack,
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            // model.pop();
-            //model.navigateToBuyAirtime();
+            viewModel.navigateToStartupView();
           },
           icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),
         ),

@@ -1,7 +1,12 @@
+import 'package:my_first_app/app/app.locator.dart';
+import 'package:my_first_app/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 //View Model holds the functionanlity for the view
 class CounterViewModel extends BaseViewModel {
+  final _navigationService = locator<NavigationService>();
+
   int _counter = 0;
 
   int get counter => _counter;
@@ -14,5 +19,9 @@ class CounterViewModel extends BaseViewModel {
   void decrementCounter() {
     _counter--;
     rebuildUi();
+  }
+
+  void navigateToHomeView() {
+    _navigationService.navigateToHomeView();
   }
 }

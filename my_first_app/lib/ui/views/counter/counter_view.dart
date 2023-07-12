@@ -19,13 +19,14 @@ class CounterView extends StackedView<CounterViewModel> {
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            // model.pop();
+            // viewModel.pop();
             //model.navigateToBuyAirtime();
+            viewModel.navigateToHomeView();
           },
           icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),
         ),
         title: const Text(
-          'Home View',
+          'Counter View',
           style: TextStyle(color: Colors.white),
           // style: appBarTextStyle,
           textAlign: TextAlign.center,
@@ -50,12 +51,11 @@ class CounterView extends StackedView<CounterViewModel> {
             onPressed: viewModel.incrementCounter,
           ),
           FloatingActionButton(
-            child: const Icon(Icons.remove),
-            onPressed: (){
-             // print("Decrement");
-              viewModel.decrementCounter;
-            }
-          ),
+              child: const Icon(Icons.remove),
+              onPressed: () {
+                // print("Decrement");
+                viewModel.decrementCounter;
+              }),
         ],
       ),
     );

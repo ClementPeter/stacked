@@ -34,6 +34,10 @@ class HomeViewModel extends BaseViewModel {
     _navigationService.navigateToCounterView();
   }
 
+  void navigateToStartupView() {
+    _navigationService.navigateToStartupView();
+  }
+
   //Show bottom sheet
   void showBottomSheet() {
     _bottomSheetService.showCustomSheet(
