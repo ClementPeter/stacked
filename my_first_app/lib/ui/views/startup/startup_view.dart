@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-//import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:my_first_app/ui/common/ui_helpers.dart';
 
@@ -66,7 +64,7 @@ class StartupView extends StackedView<StartupViewModel> {
                       ),
                     );
                   },
-                  //Alternamtive to onViewModelReady
+                  //Alternative to onViewModelReady
                   onEnd: viewModel.runTimedStartupLogic,
                 )
               ],
