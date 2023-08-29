@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:my_first_app/ui/common/ui_helpers.dart';
 
@@ -6,6 +7,9 @@ import 'startup_viewmodel.dart';
 
 class StartupView extends StackedView<StartupViewModel> {
   const StartupView({Key? key}) : super(key: key);
+
+  @override
+  StartupViewModel viewModelBuilder(BuildContext context) => StartupViewModel();
 
   @override
   Widget builder(
@@ -25,6 +29,7 @@ class StartupView extends StackedView<StartupViewModel> {
                 fontWeight: FontWeight.w900,
               ),
             ),
+            const Text("STARTUP_VIEW"),
             verticalSpaceSmall,
             const SizedBox(
               width: 40,
@@ -65,7 +70,8 @@ class StartupView extends StackedView<StartupViewModel> {
                     );
                   },
                   //Alternative to onViewModelReady
-                  onEnd: viewModel.runTimedStartupLogic,
+                  //onEnd: viewModel.runTimedStartupLogic,
+                  onEnd: viewModel.runStartupLogic,
                 )
               ],
             )
@@ -75,13 +81,7 @@ class StartupView extends StackedView<StartupViewModel> {
     );
   }
 
-  @override
-  StartupViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      StartupViewModel();
-
-  // //onViewModelReady is used to run general function associated/ needed by it's view
+  //onViewModelReady is used to run general function associated/ needed by it's view
   // @override
   // void onViewModelReady(StartupViewModel viewModel) {
   //   SchedulerBinding.instance

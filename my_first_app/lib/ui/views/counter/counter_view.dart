@@ -8,6 +8,12 @@ class CounterView extends StackedView<CounterViewModel> {
   const CounterView({Key? key}) : super(key: key);
 
   @override
+  CounterViewModel viewModelBuilder(
+    BuildContext context,
+  ) =>
+      CounterViewModel();
+
+  @override
   Widget builder(
     BuildContext context,
     CounterViewModel viewModel,
@@ -53,17 +59,10 @@ class CounterView extends StackedView<CounterViewModel> {
           FloatingActionButton(
               child: const Icon(Icons.remove),
               onPressed: () {
-                // print("Decrement");
-                viewModel.decrementCounter;
+                viewModel.decrementCounter();
               }),
         ],
       ),
     );
   }
-
-  @override
-  CounterViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      CounterViewModel();
 }

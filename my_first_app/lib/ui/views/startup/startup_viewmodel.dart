@@ -8,13 +8,14 @@ class StartupViewModel extends BaseViewModel {
 
   // Place anything here that needs to happen before we get into the application
   Future runStartupLogic() async {
-    // await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     // This is where you can make decisions on where your app should navigate when
     // you have custom startup logic
 
-    //Replace vs Navigate - Replace removes the previous screen
-    //Navigates keeps the previous screen
+    //ReplaceWith vs NavigateTo
+    //Replace : removes the previous screen
+    //Navigates : keeps the previous screen
 
     //_navigationService.replaceWithCounterView();
     // _navigationService.navigateToCounterView();
@@ -23,7 +24,7 @@ class StartupViewModel extends BaseViewModel {
   }
 
   //Using onViewModelReady CALLBACK
-  runTimedStartupLogic() {
+  void runTimedStartupLogic() {
     // This is where you can make decisions on where your app should navigate when
     _navigationService.navigateToHomeView();
   }
@@ -35,7 +36,7 @@ class StartupViewModel extends BaseViewModel {
   //   _navigationService.navigateToHomeView();
   // }
 
-  runManualStartupLogic() {
+  void runManualStartupLogic() {
     _navigationService.navigateToHomeView();
   }
 }

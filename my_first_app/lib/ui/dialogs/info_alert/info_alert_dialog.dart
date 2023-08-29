@@ -3,7 +3,6 @@ import 'package:my_first_app/ui/common/app_colors.dart';
 import 'package:my_first_app/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import 'info_alert_dialog_model.dart';
 
 const double _graphicSize = 60;
