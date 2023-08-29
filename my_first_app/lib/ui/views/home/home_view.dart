@@ -7,6 +7,9 @@ import 'home_viewmodel.dart';
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
+  //trying - building custom route - not working for now
+  static String homeRoute = "/homeRoute";
+
   @override
   Widget builder(
     BuildContext context,
