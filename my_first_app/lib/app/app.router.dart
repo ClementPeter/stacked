@@ -9,7 +9,6 @@ import 'package:flutter/material.dart' as _i6;
 import 'package:flutter/material.dart';
 import 'package:my_first_app/ui/views/counter/counter_view.dart' as _i4;
 import 'package:my_first_app/ui/views/home/home_view.dart' as _i2;
-import 'package:my_first_app/ui/views/login/login_view.dart' as _i5;
 import 'package:my_first_app/ui/views/startup/startup_view.dart' as _i3;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i7;
@@ -45,10 +44,6 @@ class StackedRouter extends _i1.RouterBase {
       Routes.counterView,
       page: _i4.CounterView,
     ),
-    _i1.RouteDef(
-      Routes.loginView,
-      page: _i5.LoginView,
-    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
@@ -69,13 +64,6 @@ class StackedRouter extends _i1.RouterBase {
     _i4.CounterView: (data) {
       return _i6.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CounterView(),
-        settings: data,
-        maintainState: false,
-      );
-    },
-    _i5.LoginView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.LoginView(),
         settings: data,
         maintainState: false,
       );
