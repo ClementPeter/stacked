@@ -57,10 +57,9 @@ class CounterView extends StackedView<CounterViewModel> {
             onPressed: viewModel.incrementCounter,
           ),
           FloatingActionButton(
-              child: const Icon(Icons.remove),
-              onPressed: () {
-                viewModel.decrementCounter();
-              }),
+            child: const Icon(Icons.remove),
+            onPressed: viewModel.decrementCounter,
+          ),
         ],
       ),
     );

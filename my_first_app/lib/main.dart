@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: Theme.of(context).copyWith(
+        useMaterial3: true,
         primaryColor: kcBackgroundColor,
         focusColor: kcPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(
