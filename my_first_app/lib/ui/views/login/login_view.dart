@@ -14,7 +14,7 @@ class LoginView extends StackedView<LoginViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor:kcLoginBackgroundColor,
+      backgroundColor: kcLoginBackgroundColor,
       body: Container(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
       ),
@@ -22,8 +22,5 @@ class LoginView extends StackedView<LoginViewModel> {
   }
 
   @override
-  LoginViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      LoginViewModel();
+  LoginViewModel viewModelBuilder(BuildContext context) => LoginViewModel();
 }

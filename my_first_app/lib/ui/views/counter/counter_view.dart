@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/ui/common/app_colors.dart';
 import 'package:stacked/stacked.dart';
+import 'package:my_first_app/ui/common/app_colors.dart';
 
 import 'counter_viewmodel.dart';
 
@@ -8,10 +8,7 @@ class CounterView extends StackedView<CounterViewModel> {
   const CounterView({Key? key}) : super(key: key);
 
   @override
-  CounterViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      CounterViewModel();
+  CounterViewModel viewModelBuilder(BuildContext context) => CounterViewModel();
 
   @override
   Widget builder(
