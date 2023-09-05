@@ -11,6 +11,13 @@ class StartupView extends StackedView<StartupViewModel> {
   @override
   StartupViewModel viewModelBuilder(BuildContext context) => StartupViewModel();
 
+  //onViewModelReady is used to run function once the ViewModel is first created or re-created
+  @override
+  void onViewModelReady(StartupViewModel viewModel) {
+    SchedulerBinding.instance
+        .addPostFrameCallback((timeStamp) => viewModel.runTimedStartupLogic());
+  }
+
   @override
   Widget builder(
     BuildContext context,
@@ -80,11 +87,4 @@ class StartupView extends StackedView<StartupViewModel> {
       ),
     );
   }
-
-  //onViewModelReady is used to run general function associated/ needed by it's view
-  // @override
-  // void onViewModelReady(StartupViewModel viewModel) {
-  //   SchedulerBinding.instance
-  //       .addPostFrameCallback((timeStamp) => viewModel.runTimedStartupLogic());
-  // }
 }
