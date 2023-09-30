@@ -18,12 +18,10 @@ class CounterView extends StackedView<CounterViewModel> {
   ) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        automaticallyImplyLeading: false,
+        backgroundColor: kcBlue,
+        //automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            // viewModel.pop();
-            //model.navigateToBuyAirtime();
             viewModel.navigateToHomeView();
           },
           icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),

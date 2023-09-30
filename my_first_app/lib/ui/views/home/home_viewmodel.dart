@@ -29,13 +29,16 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  //Navigate to counter view
+  //"NavigateTo" counter view - Keeps home view in the navigation stack
   void navigateToCounterView() {
     _navigationService.navigateToCounterView();
   }
 
   void navigateToStartupView() {
-    _navigationService.navigateToStartupView();
+    //_navigationService.navigateToStartupView();
+
+    //OR - better still
+    _navigationService.back();
   }
 
   //Show bottom sheet

@@ -15,13 +15,13 @@ class StartupViewModel extends BaseViewModel {
     // you have custom startup logic
 
     // ReplaceWith vs NavigateTo
-    // Replace : removes the previous screen
-    // Navigates : keeps the previous screen
+    // Replace : removes the previous screen in the Navigation Stack
+    // Navigates : keeps the previous screen in the Navigation Stack
 
     //_navigationService.replaceWithCounterView();
     // _navigationService.navigateToCounterView();
 
-    _navigationService.replaceWithHomeView();
+    _navigationService.replaceWith(Routes.homeView);
     //_navigationService.navigateToHomeView();
 
     //trying out custom routing - not working for now

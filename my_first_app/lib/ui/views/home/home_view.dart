@@ -19,7 +19,7 @@ class HomeView extends StackedView<HomeViewModel> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kcBlack,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
             viewModel.navigateToStartupView();
