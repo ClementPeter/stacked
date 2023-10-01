@@ -21,8 +21,6 @@ class Routes {
 
   static const textReverseView = '/text-reverse-view';
 
-  //static const textReverseView = '/text-reverse-view';
-
   static const all = <String>{
     homeView,
     startupView,
@@ -39,10 +37,6 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.startupView,
       page: _i3.StartupView,
-    ),
-    _i1.RouteDef(
-      Routes.textReverseView,
-      page: _i4.TextReverseView,
     ),
     _i1.RouteDef(
       Routes.textReverseView,
@@ -121,20 +115,6 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  // Future<dynamic> navigateToTextReverseView([
-  //   int? routerId,
-  //   bool preventDuplicates = true,
-  //   Map<String, String>? parameters,
-  //   Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-  //       transition,
-  // ]) async {
-  //   return navigateTo<dynamic>(Routes.textReverseView,
-  //       id: routerId,
-  //       preventDuplicates: preventDuplicates,
-  //       parameters: parameters,
-  //       transition: transition);
-  // }
-
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -176,18 +156,4 @@ extension NavigatorStateExtension on _i7.NavigationService {
         parameters: parameters,
         transition: transition);
   }
-
-  // Future<dynamic> replaceWithTextReverseView([
-  //   int? routerId,
-  //   bool preventDuplicates = true,
-  //   Map<String, String>? parameters,
-  //   Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-  //       transition,
-  // ]) async {
-  //   return replaceWith<dynamic>(Routes.textReverseView,
-  //       id: routerId,
-  //       preventDuplicates: preventDuplicates,
-  //       parameters: parameters,
-  //       transition: transition);
-  // }
 }
