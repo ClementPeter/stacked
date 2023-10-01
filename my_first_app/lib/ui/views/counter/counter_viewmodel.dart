@@ -24,4 +24,14 @@ class CounterViewModel extends BaseViewModel {
   void navigateToHomeView() {
     _navigationService.navigateToHomeView();
   }
+
+  //Go one screen back
+  void pop() {
+    _navigationService.back();
+  }
+
+  //Go one screen back and pass data
+  void popAndPassData() {
+    _navigationService.back(result: _counter);
+  }
 }

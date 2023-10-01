@@ -20,13 +20,13 @@ class Routes {
 
   static const counterView = '/counter-view';
 
-  static const loginView = '/login-view';
+  //static const loginView = '/login-view';
 
   static const all = <String>{
     homeView,
     startupView,
     counterView,
-    loginView,
+    //loginView,
   };
 }
 
@@ -119,19 +119,19 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToLoginView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return navigateTo<dynamic>(Routes.loginView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
+  // Future<dynamic> navigateToLoginView([
+  //   int? routerId,
+  //   bool preventDuplicates = true,
+  //   Map<String, String>? parameters,
+  //   Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+  //       transition,
+  // ]) async {
+  //   return navigateTo<dynamic>(Routes.loginView,
+  //       id: routerId,
+  //       preventDuplicates: preventDuplicates,
+  //       parameters: parameters,
+  //       transition: transition);
+  // }
 
   Future<dynamic> replaceWithHomeView([
     int? routerId,
@@ -175,17 +175,17 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithLoginView([
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  ]) async {
-    return replaceWith<dynamic>(Routes.loginView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
+  // Future<dynamic> replaceWithLoginView([
+  //   int? routerId,
+  //   bool preventDuplicates = true,
+  //   Map<String, String>? parameters,
+  //   Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+  //       transition,
+  // ]) async {
+  //   return replaceWith<dynamic>(Routes.loginView,
+  //       id: routerId,
+  //       preventDuplicates: preventDuplicates,
+  //       parameters: parameters,
+  //       transition: transition);
+  // }
 }

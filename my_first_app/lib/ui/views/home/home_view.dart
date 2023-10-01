@@ -8,7 +8,7 @@ class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
   //trying - building custom route - not working for now
-  static String homeRoute = "/homeRoute";
+  //static String homeRoute = "/homeRoute";
 
   @override
   Widget builder(
@@ -62,6 +62,28 @@ class HomeView extends StackedView<HomeViewModel> {
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
+                    verticalSpaceMedium,
+                    MaterialButton(
+                      color: Colors.black,
+                      onPressed: viewModel.navigateToCounterViewAndPassDataBack,
+                      child: const Text(
+                        'Go to Counter view model and get Data back',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    Text(viewModel.getDataBack()),
+                    // MaterialButton(
+                    //   color: Colors.black,
+                    //   onPressed: () async {
+                    //     final result =  await viewModel.navigateToCounterView;
+                    //     print('Returned result: $result');
+                    //   },
+                    //   child: const Text(
+                    //     'Go to Text Reverse UI',
+                    //     style: TextStyle(color: Colors.white),
+                    //   ),
+                    // ),
                   ],
                 ),
                 Row(

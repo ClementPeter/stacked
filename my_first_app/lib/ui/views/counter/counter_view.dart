@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:my_first_app/ui/common/app_colors.dart';
 
 import 'counter_viewmodel.dart';
 
 class CounterView extends StackedView<CounterViewModel> {
-  const CounterView({Key? key}) : super(key: key);
+  const CounterView({
+    Key? key,
+  }) : super(key: key);
+
+  //final int startingIndex;
 
   @override
   CounterViewModel viewModelBuilder(BuildContext context) => CounterViewModel();
@@ -35,26 +40,50 @@ class CounterView extends StackedView<CounterViewModel> {
         centerTitle: true,
         elevation: 0.1,
       ),
-      body: Center(
-        child: Text(
-          viewModel.counter.toString(),
-          style: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              viewModel.counter.toString(),
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ),
+          verticalSpaceSmall,
+          MaterialButton(
+            color: Colors.black,
+            onPressed: () {
+              viewModel.pop();
+            },
+            child: const Text(
+              'Go Back',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          verticalSpaceSmall,
+          MaterialButton(
+            color: Colors.black,
+            onPressed: viewModel.popAndPassData,
+            child: const Text(
+              'Go Back and return Data',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: viewModel.incrementCounter,
           ),
-          FloatingActionButton(
-            child: const Icon(Icons.remove),
-            onPressed: viewModel.decrementCounter,
-          ),
+          // FloatingActionButton(
+          //   child: const Icon(Icons.remove),
+          //   onPressed: viewModel.decrementCounter,
+          // ),
         ],
       ),
     );

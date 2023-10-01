@@ -78,7 +78,7 @@ class StartupView extends StackedView<StartupViewModel> {
                   },
                   //Alternative to onViewModelReady
                   //onEnd: viewModel.runTimedStartupLogic,
-                  onEnd: viewModel.runStartupLogic,
+                  //onEnd: viewModel.runStartupLogic,
                 )
               ],
             )

@@ -12,13 +12,19 @@ class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   String get counterLabel => 'Go to Counter view';
+  //String get result => _result.toString();
 
-  int _counter = 0;
+  int? _result = 0;
 
-  void incrementCounter() {
-    _counter++;
-    rebuildUi();
+  final int _counter = 5;
+
+  String getDataBack() {
+    // String data = 'Data from counter UI is xyz ${_result.toString()}';
+    // rebuildUi();
+    return 'Data from counter UI is xyz ${_result.toString()}';
   }
+
+  void incrementCounter() {}
 
   //Show dialog
   void showDialog() {
@@ -31,14 +37,33 @@ class HomeViewModel extends BaseViewModel {
 
   //"NavigateTo" counter view - Keeps home view in the navigation stack
   void navigateToCounterView() {
-    _navigationService.navigateToCounterView();
+    //This navigates to counter view and keeps home view in the navigation stack
+    //_navigationService.navigateToCounterView();
+
+    //This navigates to counter view but removes Home view from the navigation stack
+    // _navigationService.replaceWithCounterView();
+
+    //trying custom route transition
+    _navigationService.navigateTo(
+      Routes.counterView,
+      transition: TransitionsBuilders.slideBottom,
+    );
+  }
+
+  //passing data back from route
+  void navigateToCounterViewAndPassDataBack() async {
+    final passedData = await _navigationService.navigateToCounterView();
+    _result = passedData;
+    rebuildUi();
+    print('Returned result: $_result');
   }
 
   void navigateToStartupView() {
-    //_navigationService.navigateToStartupView();
+    //Navigate to Startup view and removes home from the route
+    _navigationService.replaceWithStartupView();
 
-    //OR - better still
-    _navigationService.back();
+    //Navigate to Startup view and keep home in the route
+    //_navigationService.navigateToStartupView();
   }
 
   //Show bottom sheet
