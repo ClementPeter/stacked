@@ -1,180 +1,180 @@
-// // GENERATED CODE - DO NOT MODIFY BY HAND
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
-// // **************************************************************************
-// // StackedFormGenerator
-// // **************************************************************************
+// **************************************************************************
+// StackedFormGenerator
+// **************************************************************************
 
-// // ignore_for_file: public_member_api_docs, constant_identifier_names, non_constant_identifier_names,unnecessary_this
+// ignore_for_file: public_member_api_docs, constant_identifier_names, non_constant_identifier_names,unnecessary_this
 
-// import 'package:flutter/material.dart';
-// import 'package:stacked/stacked.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
-// const bool _autoTextFieldValidation = true;
+const bool _autoTextFieldValidation = true;
 
-// const String ReverseInputValueKey = 'reverseInput';
+const String ReverseInputValueKey = 'reverseInput';
 
-// final Map<String, TextEditingController>
-//     _TextReverseViewTextEditingControllers = {};
+final Map<String, TextEditingController>
+    _TextReverseViewTextEditingControllers = {};
 
-// final Map<String, FocusNode> _TextReverseViewFocusNodes = {};
+final Map<String, FocusNode> _TextReverseViewFocusNodes = {};
 
-// final Map<String, String? Function(String?)?> _TextReverseViewTextValidations =
-//     {
-//   ReverseInputValueKey: null,
-// };
+final Map<String, String? Function(String?)?> _TextReverseViewTextValidations =
+    {
+  ReverseInputValueKey: null,
+};
 
-// mixin $TextReverseView {
-//   TextEditingController get reverseInputController =>
-//       _getFormTextEditingController(ReverseInputValueKey);
+mixin $TextReverseView {
+  TextEditingController get reverseInputController =>
+      _getFormTextEditingController(ReverseInputValueKey);
 
-//   FocusNode get reverseInputFocusNode =>
-//       _getFormFocusNode(ReverseInputValueKey);
+  FocusNode get reverseInputFocusNode =>
+      _getFormFocusNode(ReverseInputValueKey);
 
-//   TextEditingController _getFormTextEditingController(
-//     String key, {
-//     String? initialValue,
-//   }) {
-//     if (_TextReverseViewTextEditingControllers.containsKey(key)) {
-//       return _TextReverseViewTextEditingControllers[key]!;
-//     }
+  TextEditingController _getFormTextEditingController(
+    String key, {
+    String? initialValue,
+  }) {
+    if (_TextReverseViewTextEditingControllers.containsKey(key)) {
+      return _TextReverseViewTextEditingControllers[key]!;
+    }
 
-//     _TextReverseViewTextEditingControllers[key] =
-//         TextEditingController(text: initialValue);
-//     return _TextReverseViewTextEditingControllers[key]!;
-//   }
+    _TextReverseViewTextEditingControllers[key] =
+        TextEditingController(text: initialValue);
+    return _TextReverseViewTextEditingControllers[key]!;
+  }
 
-//   FocusNode _getFormFocusNode(String key) {
-//     if (_TextReverseViewFocusNodes.containsKey(key)) {
-//       return _TextReverseViewFocusNodes[key]!;
-//     }
-//     _TextReverseViewFocusNodes[key] = FocusNode();
-//     return _TextReverseViewFocusNodes[key]!;
-//   }
+  FocusNode _getFormFocusNode(String key) {
+    if (_TextReverseViewFocusNodes.containsKey(key)) {
+      return _TextReverseViewFocusNodes[key]!;
+    }
+    _TextReverseViewFocusNodes[key] = FocusNode();
+    return _TextReverseViewFocusNodes[key]!;
+  }
 
-//   /// Registers a listener on every generated controller that calls [model.setData()]
-//   /// with the latest textController values
-//   void syncFormWithViewModel(FormStateHelper model) {
-//     reverseInputController.addListener(() => _updateFormData(model));
+  /// Registers a listener on every generated controller that calls [model.setData()]
+  /// with the latest textController values
+  void syncFormWithViewModel(FormStateHelper model) {
+    reverseInputController.addListener(() => _updateFormData(model));
 
-//     _updateFormData(model, forceValidate: _autoTextFieldValidation);
-//   }
+    _updateFormData(model, forceValidate: _autoTextFieldValidation);
+  }
 
-//   /// Registers a listener on every generated controller that calls [model.setData()]
-//   /// with the latest textController values
-//   @Deprecated(
-//     'Use syncFormWithViewModel instead.'
-//     'This feature was deprecated after 3.1.0.',
-//   )
-//   void listenToFormUpdated(FormViewModel model) {
-//     reverseInputController.addListener(() => _updateFormData(model));
+  /// Registers a listener on every generated controller that calls [model.setData()]
+  /// with the latest textController values
+  @Deprecated(
+    'Use syncFormWithViewModel instead.'
+    'This feature was deprecated after 3.1.0.',
+  )
+  void listenToFormUpdated(FormViewModel model) {
+    reverseInputController.addListener(() => _updateFormData(model));
 
-//     _updateFormData(model, forceValidate: _autoTextFieldValidation);
-//   }
+    _updateFormData(model, forceValidate: _autoTextFieldValidation);
+  }
 
-//   /// Updates the formData on the FormViewModel
-//   void _updateFormData(FormStateHelper model, {bool forceValidate = false}) {
-//     model.setData(
-//       model.formValueMap
-//         ..addAll({
-//           ReverseInputValueKey: reverseInputController.text,
-//         }),
-//     );
+  /// Updates the formData on the FormViewModel
+  void _updateFormData(FormStateHelper model, {bool forceValidate = false}) {
+    model.setData(
+      model.formValueMap
+        ..addAll({
+          ReverseInputValueKey: reverseInputController.text,
+        }),
+    );
 
-//     if (_autoTextFieldValidation || forceValidate) {
-//       updateValidationData(model);
-//     }
-//   }
+    if (_autoTextFieldValidation || forceValidate) {
+      updateValidationData(model);
+    }
+  }
 
-//   bool validateFormFields(FormViewModel model) {
-//     _updateFormData(model, forceValidate: true);
-//     return model.isFormValid;
-//   }
+  bool validateFormFields(FormViewModel model) {
+    _updateFormData(model, forceValidate: true);
+    return model.isFormValid;
+  }
 
-//   /// Calls dispose on all the generated controllers and focus nodes
-//   void disposeForm() {
-//     // The dispose function for a TextEditingController sets all listeners to null
+  /// Calls dispose on all the generated controllers and focus nodes
+  void disposeForm() {
+    // The dispose function for a TextEditingController sets all listeners to null
 
-//     for (var controller in _TextReverseViewTextEditingControllers.values) {
-//       controller.dispose();
-//     }
-//     for (var focusNode in _TextReverseViewFocusNodes.values) {
-//       focusNode.dispose();
-//     }
+    for (var controller in _TextReverseViewTextEditingControllers.values) {
+      controller.dispose();
+    }
+    for (var focusNode in _TextReverseViewFocusNodes.values) {
+      focusNode.dispose();
+    }
 
-//     _TextReverseViewTextEditingControllers.clear();
-//     _TextReverseViewFocusNodes.clear();
-//   }
-// }
+    _TextReverseViewTextEditingControllers.clear();
+    _TextReverseViewFocusNodes.clear();
+  }
+}
 
-// extension ValueProperties on FormStateHelper {
-//   bool get hasAnyValidationMessage => this
-//       .fieldsValidationMessages
-//       .values
-//       .any((validation) => validation != null);
+extension ValueProperties on FormStateHelper {
+  bool get hasAnyValidationMessage => this
+      .fieldsValidationMessages
+      .values
+      .any((validation) => validation != null);
 
-//   bool get isFormValid {
-//     if (!_autoTextFieldValidation) this.validateForm();
+  bool get isFormValid {
+    if (!_autoTextFieldValidation) this.validateForm();
 
-//     return !hasAnyValidationMessage;
-//   }
+    return !hasAnyValidationMessage;
+  }
 
-//   String? get reverseInputValue =>
-//       this.formValueMap[ReverseInputValueKey] as String?;
+  String? get reverseInputValue =>
+      this.formValueMap[ReverseInputValueKey] as String?;
 
-//   set reverseInputValue(String? value) {
-//     this.setData(
-//       this.formValueMap..addAll({ReverseInputValueKey: value}),
-//     );
+  set reverseInputValue(String? value) {
+    this.setData(
+      this.formValueMap..addAll({ReverseInputValueKey: value}),
+    );
 
-//     if (_TextReverseViewTextEditingControllers.containsKey(
-//         ReverseInputValueKey)) {
-//       _TextReverseViewTextEditingControllers[ReverseInputValueKey]?.text =
-//           value ?? '';
-//     }
-//   }
+    if (_TextReverseViewTextEditingControllers.containsKey(
+        ReverseInputValueKey)) {
+      _TextReverseViewTextEditingControllers[ReverseInputValueKey]?.text =
+          value ?? '';
+    }
+  }
 
-//   bool get hasReverseInput =>
-//       this.formValueMap.containsKey(ReverseInputValueKey) &&
-//       (reverseInputValue?.isNotEmpty ?? false);
+  bool get hasReverseInput =>
+      this.formValueMap.containsKey(ReverseInputValueKey) &&
+      (reverseInputValue?.isNotEmpty ?? false);
 
-//   bool get hasReverseInputValidationMessage =>
-//       this.fieldsValidationMessages[ReverseInputValueKey]?.isNotEmpty ?? false;
+  bool get hasReverseInputValidationMessage =>
+      this.fieldsValidationMessages[ReverseInputValueKey]?.isNotEmpty ?? false;
 
-//   String? get reverseInputValidationMessage =>
-//       this.fieldsValidationMessages[ReverseInputValueKey];
-// }
+  String? get reverseInputValidationMessage =>
+      this.fieldsValidationMessages[ReverseInputValueKey];
+}
 
-// extension Methods on FormStateHelper {
-//   setReverseInputValidationMessage(String? validationMessage) =>
-//       this.fieldsValidationMessages[ReverseInputValueKey] = validationMessage;
+extension Methods on FormStateHelper {
+  setReverseInputValidationMessage(String? validationMessage) =>
+      this.fieldsValidationMessages[ReverseInputValueKey] = validationMessage;
 
-//   /// Clears text input fields on the Form
-//   void clearForm() {
-//     reverseInputValue = '';
-//   }
+  /// Clears text input fields on the Form
+  void clearForm() {
+    reverseInputValue = '';
+  }
 
-//   /// Validates text input fields on the Form
-//   void validateForm() {
-//     this.setValidationMessages({
-//       ReverseInputValueKey: getValidationMessage(ReverseInputValueKey),
-//     });
-//   }
-// }
+  /// Validates text input fields on the Form
+  void validateForm() {
+    this.setValidationMessages({
+      ReverseInputValueKey: getValidationMessage(ReverseInputValueKey),
+    });
+  }
+}
 
-// /// Returns the validation message for the given key
-// String? getValidationMessage(String key) {
-//   final validatorForKey = _TextReverseViewTextValidations[key];
-//   if (validatorForKey == null) return null;
+/// Returns the validation message for the given key
+String? getValidationMessage(String key) {
+  final validatorForKey = _TextReverseViewTextValidations[key];
+  if (validatorForKey == null) return null;
 
-//   String? validationMessageForKey = validatorForKey(
-//     _TextReverseViewTextEditingControllers[key]!.text,
-//   );
+  String? validationMessageForKey = validatorForKey(
+    _TextReverseViewTextEditingControllers[key]!.text,
+  );
 
-//   return validationMessageForKey;
-// }
+  return validationMessageForKey;
+}
 
-// /// Updates the fieldsValidationMessages on the FormViewModel
-// void updateValidationData(FormStateHelper model) =>
-//     model.setValidationMessages({
-//       ReverseInputValueKey: getValidationMessage(ReverseInputValueKey),
-//     });
+/// Updates the fieldsValidationMessages on the FormViewModel
+void updateValidationData(FormStateHelper model) =>
+    model.setValidationMessages({
+      ReverseInputValueKey: getValidationMessage(ReverseInputValueKey),
+    });
