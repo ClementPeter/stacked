@@ -5,8 +5,7 @@ import 'package:my_first_app/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:my_first_app/ui/views/counter/counter_view.dart';
-import 'package:my_first_app/ui/views/text_reverse/text_reverse_view.dart';
-import 'package:my_first_app/ui/views/text_reverse/text_reverse_view.dart';
+
 // @stacked-import
 
 @StackedApp(
@@ -14,8 +13,7 @@ import 'package:my_first_app/ui/views/text_reverse/text_reverse_view.dart';
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
     CustomRoute(page: CounterView),
-    MaterialRoute(page: TextReverseView),
-    MaterialRoute(page: TextReverseView),
+
 // @stacked-route
   ],
   dependencies: [
