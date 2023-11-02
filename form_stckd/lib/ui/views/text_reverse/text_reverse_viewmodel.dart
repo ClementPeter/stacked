@@ -12,5 +12,6 @@ class TextReverseViewModel extends FormViewModel {
     print('hasAnyValidationMessage $hasAnyValidationMessage');
     print('hasReverseInputValidationMessage $hasReverseInputValidationMessage');
     print('hasError $hasError');
+    print('---------');
   }
 }
