@@ -8,22 +8,35 @@ import 'text_reverse_viewmodel.dart';
 
 //Forms in stacked
 //1. stacked create view textReverse
+//1b. Create our various TextFormField
 //2. Add @FormView Annotation and specify controllers
 //3. Run stacked generate to generate codegen files for Forms
 //4. Automatic Text to ViewModel Synchronization
 //4a. Import the generated form file
 //4b. Mixin the $TextReverseView
 //4c. Call the syncFormWithViewModel function when the viewModel is ready
-//LAST. Update ViewModel to extend from the FormViewModel instead of the BaseViewModel.
+//LAST (not per say)...
+//Update ViewModel to extend from the FormViewModel instead of the BaseViewModel.
 
 @FormView(
   fields: [
-    FormTextField(name: 'reverseInput'),
+    FormTextField(
+      name: 'reverseInput',
+      validator: TextReverseValidators.validateReverseText, //181 lines .form
+    ),
   ],
 )
 class TextReverseView extends StackedView<TextReverseViewModel>
     with $TextReverseView {
   const TextReverseView({Key? key}) : super(key: key);
+
+  //Dispose forms
+  @override
+  void onDispose(TextReverseViewModel viewModel) {
+    // TODO: implement onDispose
+    disposeForm();
+    super.onDispose(viewModel);
+  }
 
   @override
   Widget builder(
@@ -48,7 +61,7 @@ class TextReverseView extends StackedView<TextReverseViewModel>
               verticalSpaceSmall,
               TextFormField(controller: reverseInputController),
               if (viewModel.hasReverseInputValidationMessage) ...[
-                verticalSpaceMedium,
+                verticalSpaceSmall,
                 Text(
                   viewModel.reverseInputValidationMessage!,
                   style: const TextStyle(
@@ -80,7 +93,7 @@ class TextReverseView extends StackedView<TextReverseViewModel>
                 color: Colors.black,
                 onPressed: viewModel.showValues,
                 child: const Text(
-                  'Go to Text Reverse UI',
+                  'Show Inbuilt form values in console ',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -94,7 +107,6 @@ class TextReverseView extends StackedView<TextReverseViewModel>
 
   @override
   void onViewModelReady(TextReverseViewModel viewModel) {
-    // TODO: implement onViewModelReady
     syncFormWithViewModel(viewModel);
     super.onViewModelReady(viewModel);
   }
