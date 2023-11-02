@@ -7,9 +7,6 @@ import 'home_viewmodel.dart';
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
-  //trying - building custom route - not working for now
-  //static String homeRoute = "/homeRoute";
-
   @override
   Widget builder(
     BuildContext context,
@@ -19,13 +16,13 @@ class HomeView extends StackedView<HomeViewModel> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kcBlack,
-        // automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {
-            viewModel.navigateToStartupView();
-          },
-          icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),
-        ),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   onPressed: () {
+        //     viewModel.navigateToStartupView();
+        //   },
+        //   icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),
+        // ),
         title: const Text(
           'Home View',
           style: TextStyle(color: Colors.white),
@@ -72,18 +69,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       ),
                     ),
                     verticalSpaceSmall,
-                    Text(viewModel.getDataBack()),
-                    // MaterialButton(
-                    //   color: Colors.black,
-                    //   onPressed: () async {
-                    //     final result =  await viewModel.navigateToCounterView;
-                    //     print('Returned result: $result');
-                    //   },
-                    //   child: const Text(
-                    //     'Go to Text Reverse UI',
-                    //     style: TextStyle(color: Colors.white),
-                    //   ),
-                    // ),
+                    Text('Data from counter UI is xyz ${viewModel.result}'),
                   ],
                 ),
                 Row(

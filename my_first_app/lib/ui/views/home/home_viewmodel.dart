@@ -14,15 +14,11 @@ class HomeViewModel extends BaseViewModel {
   String get counterLabel => 'Go to Counter view';
   //String get result => _result.toString();
 
-  int? _result = 0;
+  int _result = 2;
+
+  int get result => _result;
 
   final int _counter = 5;
-
-  String getDataBack() {
-    // String data = 'Data from counter UI is xyz ${_result.toString()}';
-    // rebuildUi();
-    return 'Data from counter UI is xyz ${_result.toString()}';
-  }
 
   void incrementCounter() {}
 
@@ -54,8 +50,8 @@ class HomeViewModel extends BaseViewModel {
   void navigateToCounterViewAndPassDataBack() async {
     final passedData = await _navigationService.navigateToCounterView();
     _result = passedData;
+    print('Returned result: $result');
     rebuildUi();
-    print('Returned result: $_result');
   }
 
   void navigateToStartupView() {

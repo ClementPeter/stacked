@@ -31,8 +31,11 @@ class StartupViewModel extends BaseViewModel {
   //Using onViewModelReady CALLBACK
   Future runTimedStartupLogic() async {
     await Future.delayed(const Duration(seconds: 5));
-    // This is where you can make decisions on where your app should navigate when
-    _navigationService.navigateToHomeView();
+    // This is where you can make decisions on where your app should navigate to
+    //_navigationService.navigateToHomeView();
+
+    //This navigates to home view and clears the navigation stack behind
+    _navigationService.clearStackAndShow(Routes.homeView);
   }
 
   // //Using onViewModelReady CALLBACK

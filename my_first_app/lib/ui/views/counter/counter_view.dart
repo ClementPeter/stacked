@@ -10,8 +10,6 @@ class CounterView extends StackedView<CounterViewModel> {
     Key? key,
   }) : super(key: key);
 
-  //final int startingIndex;
-
   @override
   CounterViewModel viewModelBuilder(BuildContext context) => CounterViewModel();
 
@@ -26,9 +24,7 @@ class CounterView extends StackedView<CounterViewModel> {
         backgroundColor: kcBlue,
         //automaticallyImplyLeading: false,
         leading: IconButton(
-          onPressed: () {
-            viewModel.navigateToHomeView();
-          },
+          onPressed: viewModel.navigateToHomeView,
           icon: const Icon(Icons.arrow_back, color: kcVeryLightGrey),
         ),
         title: const Text(
@@ -73,17 +69,22 @@ class CounterView extends StackedView<CounterViewModel> {
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
+            heroTag: 1,
             child: const Icon(Icons.add),
             onPressed: viewModel.incrementCounter,
           ),
-          // FloatingActionButton(
-          //   child: const Icon(Icons.remove),
-          //   onPressed: viewModel.decrementCounter,
-          // ),
+          const SizedBox(width: 20),
+          FloatingActionButton(
+            heroTag: 2,
+            child: const Icon(Icons.remove),
+            onPressed: viewModel.decrementCounter,
+          ),
         ],
       ),
     );

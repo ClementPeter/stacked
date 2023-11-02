@@ -6,7 +6,6 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:my_first_app/ui/views/counter/counter_view.dart';
 
-import 'package:my_first_app/ui/views/splash/splash_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -15,7 +14,6 @@ import 'package:my_first_app/ui/views/splash/splash_view.dart';
     MaterialRoute(page: StartupView),
     CustomRoute(page: CounterView),
 
-    MaterialRoute(page: SplashView),
 // @stacked-route
   ],
   dependencies: [
