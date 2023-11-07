@@ -24,6 +24,10 @@ class HomeViewModel extends BaseViewModel {
     _navigationService.navigateToTextReverseView();
   }
 
+  void navigateToEmailVerifier() {
+    _navigationService.navigateToEmailVerifierView();
+  }
+
   void showDialog() {
     _dialogService.showCustomDialog(
       variant: DialogType.infoAlert,

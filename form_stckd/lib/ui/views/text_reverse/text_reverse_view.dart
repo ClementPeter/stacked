@@ -3,7 +3,6 @@ import 'package:form_stckd/ui/common/ui_helpers.dart';
 import 'package:form_stckd/ui/views/text_reverse/text_reverse_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
-
 import 'text_reverse_viewmodel.dart';
 
 //Forms in stacked
@@ -33,7 +32,6 @@ class TextReverseView extends StackedView<TextReverseViewModel>
   //Dispose forms
   @override
   void onDispose(TextReverseViewModel viewModel) {
-    // TODO: implement onDispose
     disposeForm();
     super.onDispose(viewModel);
   }

@@ -37,6 +37,7 @@ class TextReverseViewModel extends FormViewModel {
 
 //Adding a validator
 //Validator for TextFormField to detect numbers
+//Run stacked generate
 class TextReverseValidators {
   static String? validateReverseText(String? value) {
     if (value == null) {

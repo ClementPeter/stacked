@@ -50,6 +50,15 @@ class HomeView extends StackedView<HomeViewModel> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
+                    verticalSpaceMedium,
+                    MaterialButton(
+                      color: Colors.black,
+                      onPressed: viewModel.navigateToEmailVerifier,
+                      child: const Text(
+                        'Go to Email Verifier UI',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ],
                 ),
                 Row(
