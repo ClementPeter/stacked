@@ -9,17 +9,34 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.9
   stacked: ^3.4.0
   stacked_services: ^1.1.0
 
 dev_dependencies:
   build_runner: ^2.4.5
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
   mockito: ^5.4.1
   stacked_generator: ^1.3.3
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
 
+  fonts:
+    - family: Satoshi
+      fonts:
+        - asset: assets/fonts/Satoshi-Light.otf
+          weight: 300
+        - asset: assets/fonts/Satoshi-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Satoshi-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Satoshi-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Satoshi-Black.otf
+          weight: 900

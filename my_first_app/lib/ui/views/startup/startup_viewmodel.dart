@@ -1,4 +1,4 @@
-import 'package:my_first_app/ui/views/home/home_view.dart';
+//import 'package:my_first_app/ui/views/home/home_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:my_first_app/app/app.locator.dart';
 import 'package:my_first_app/app/app.router.dart';
