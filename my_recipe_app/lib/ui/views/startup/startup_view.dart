@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:my_recipe_app/ui/common/app_colors.dart';
-import 'package:my_recipe_app/ui/common/app_images.dart';
 import 'package:stacked/stacked.dart';
-//import 'package:my_recipe_app/ui/common/ui_helpers.dart';
+import 'package:my_recipe_app/ui/common/ui_helpers.dart';
 
 import 'startup_viewmodel.dart';
 
@@ -17,23 +14,34 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-        //Fix with theme extension and Pallete
-        backgroundColor: AppColors.white,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: SvgPicture.asset(AppImages.blobOne),
+            Text(
+              'STACKED',
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
             ),
-            Image.asset(AppImages.logo),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: SvgPicture.asset(AppImages.blobTwo),
-            )
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Loading ...', style: TextStyle(fontSize: 16)),
+                horizontalSpaceSmall,
+                SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    strokeWidth: 6,
+                  ),
+                )
+              ],
+            ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 
   @override

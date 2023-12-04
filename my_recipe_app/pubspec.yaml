@@ -20,13 +20,15 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.4.1
   stacked_generator: ^1.3.3
+  flutter_screenutil: ^5.9.0
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/icons/
-    - assets/images/
-
+    - assets/lottie/
+    - assets/svg/
+    - assets/png/
+    
   fonts:
     - family: Satoshi
       fonts:
