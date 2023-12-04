@@ -1,66 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyles {
-  static TextStyle headlineBold22 = TextStyle(
+  static TextStyle headlineBold22 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 22.sp,
+    fontSize: 22,
   );
 
-  static TextStyle headlineBold24 = TextStyle(
+  static TextStyle headlineBold24 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 24.sp,
+    fontSize: 24,
   );
 
-  static TextStyle headlineBold28 = TextStyle(
+  static TextStyle headlineBold28 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 28.sp,
+    fontSize: 28,
   );
 
-  static TextStyle titleRegular16 = TextStyle(
+  static TextStyle titleRegular16 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 16.sp,
+    fontSize: 16,
   );
 
-  static TextStyle titleBold16 = TextStyle(
+  static TextStyle titleBold16 = const TextStyle(
     fontWeight: FontWeight.w600,
     fontFamily: 'Satoshi',
-    fontSize: 16.sp,
+    fontSize: 16,
   );
 
-  static TextStyle labelRegular12 = TextStyle(
+  static TextStyle labelRegular12 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 12.sp,
+    fontSize: 12,
   );
 
-  static TextStyle labelRegular14 = TextStyle(
+  static TextStyle labelRegular14 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 14.sp,
+    fontSize: 14,
   );
 
-  static TextStyle labelRegular16 = TextStyle(
+  static TextStyle labelRegular16 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 16.sp,
+    fontSize: 16,
   );
 
-  static TextStyle labelMedium16 = TextStyle(
+  static TextStyle labelMedium16 = const TextStyle(
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
     fontFamily: 'Satoshi',
-    fontSize: 16.sp,
+    fontSize: 16,
   );
 }
