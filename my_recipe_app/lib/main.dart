@@ -6,6 +6,7 @@ import 'package:my_recipe_app/app/app.locator.dart';
 import 'package:my_recipe_app/app/app.router.dart';
 import 'package:my_recipe_app/ui/common/app_theme.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,14 +22,20 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.lightTheme,
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      ensureScreenSize: true,
+      child: MaterialApp(
+        theme: AppTheme.lightTheme,
+        initialRoute: Routes.startupView,
+        onGenerateRoute: StackedRouter().onGenerateRoute,
+        navigatorKey: StackedService.navigatorKey,
+        navigatorObservers: [
+          StackedService.routeObserver,
+        ],
+      ),
     );
   }
 }
