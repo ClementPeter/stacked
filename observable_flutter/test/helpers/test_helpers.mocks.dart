@@ -10,6 +10,8 @@ import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i3;
 import 'package:observable_flutter/services/api_service.dart' as _i7;
+import 'package:observable_flutter/services/book_api_service.dart' as _i9;
+import 'package:observable_flutter/services/http_service.dart' as _i8;
 import 'package:stacked_services/stacked_services.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -679,6 +681,52 @@ class MockApiService extends _i1.Mock implements _i7.ApiService {
           #getBooks,
           [],
           {#genreType: genreType},
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+        returnValueForMissingStub: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
+}
+
+/// A class which mocks [HttpService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHttpService extends _i1.Mock implements _i8.HttpService {
+  @override
+  _i5.Future<dynamic> get({
+    required dynamic path,
+    String? genreType,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #get,
+          [],
+          {
+            #path: path,
+            #genreType: genreType,
+          },
+        ),
+        returnValue: _i5.Future<dynamic>.value(),
+        returnValueForMissingStub: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
+}
+
+/// A class which mocks [BookApiService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBookApiService extends _i1.Mock implements _i9.BookApiService {
+  @override
+  _i5.Future<dynamic> getBooksfromAPI({
+    required dynamic path,
+    String? genreType,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getBooksfromAPI,
+          [],
+          {
+            #path: path,
+            #genreType: genreType,
+          },
         ),
         returnValue: _i5.Future<dynamic>.value(),
         returnValueForMissingStub: _i5.Future<dynamic>.value(),

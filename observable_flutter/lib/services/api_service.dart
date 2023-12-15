@@ -8,18 +8,20 @@ class ApiService {
   static const String books = '/books/v1/volumes';
   final _logger = getLogger('ApiService');
 
-  Future getBooks({String genreType = 'computers'}) async {
+  Future<List<Book>> getBooks({String genreType = 'computers'}) async {
     try {
       final url = Uri.https(baseUrl, books, {'q': 'subject: $genreType'});
       final response = await http.get(url);
-      // final Iterable items = jsonDecode(response.body)['items'];
-      final Iterable items = jsonDecode(response.body);
-      //print(items);
-      _logger.i(items);
-      //return items.map((item) => Book.fromJson(item['volumeInfo'])).toList();
+
+      _logger.d(response.body);
+      final Iterable items = jsonDecode(response.body)['items'];
+
+      ///_logger.i("items::::$items");
       return items.map((item) => Book.fromJson(item['volumeInfo'])).toList();
     } catch (e) {
       _logger.e(e);
+      Exception(e);
+      rethrow;
     }
   }
 }

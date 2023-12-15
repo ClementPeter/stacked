@@ -3,6 +3,8 @@ import 'package:mockito/mockito.dart';
 import 'package:observable_flutter/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:observable_flutter/services/api_service.dart';
+import 'package:observable_flutter/services/http_service.dart';
+import 'package:observable_flutter/services/book_api_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -12,6 +14,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ApiService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<HttpService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<BookApiService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -19,6 +23,8 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterApiService();
+  getAndRegisterHttpService();
+  getAndRegisterBookApiService();
 // @stacked-mock-register
 }
 
@@ -76,6 +82,20 @@ MockApiService getAndRegisterApiService() {
   _removeRegistrationIfExists<ApiService>();
   final service = MockApiService();
   locator.registerSingleton<ApiService>(service);
+  return service;
+}
+
+MockHttpService getAndRegisterHttpService() {
+  _removeRegistrationIfExists<HttpService>();
+  final service = MockHttpService();
+  locator.registerSingleton<HttpService>(service);
+  return service;
+}
+
+MockBookApiService getAndRegisterBookApiService() {
+  _removeRegistrationIfExists<BookApiService>();
+  final service = MockBookApiService();
+  locator.registerSingleton<BookApiService>(service);
   return service;
 }
 // @stacked-mock-create
