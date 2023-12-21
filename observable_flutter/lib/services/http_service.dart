@@ -14,6 +14,7 @@ class HttpService {
       final url = Uri.https(baseUrl, path, {'q': 'subject $genreType'});
       //final response =
       final Response response = await http.get(url);
+      _logger.i(response.body);
       return response.body;
     } on SocketException catch (e) {
       BookException(message: e.message);

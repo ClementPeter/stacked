@@ -22,7 +22,7 @@ void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  getAndRegisterApiService();
+  //getAndRegisterApiService();
   getAndRegisterHttpService();
   getAndRegisterBookApiService();
 // @stacked-mock-register
@@ -78,12 +78,12 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
-MockApiService getAndRegisterApiService() {
-  _removeRegistrationIfExists<ApiService>();
-  final service = MockApiService();
-  locator.registerSingleton<ApiService>(service);
-  return service;
-}
+// MockApiService getAndRegisterApiService() {
+//   _removeRegistrationIfExists<ApiService>();
+//   final service = MockApiService();
+//   locator.registerSingleton<ApiService>(service);
+//   return service;
+// }
 
 MockHttpService getAndRegisterHttpService() {
   _removeRegistrationIfExists<HttpService>();
