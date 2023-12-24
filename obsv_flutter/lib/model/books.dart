@@ -20,6 +20,9 @@ class Books {
     }
     return data;
   }
+
+  @override
+  String toString() => 'Book $items';
 }
 
 class Items {

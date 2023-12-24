@@ -1,10 +1,9 @@
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:obsv_flutter/app/app.logger.dart';
+//import 'package:obsv_flutter/model/books.dart';
 import 'package:obsv_flutter/model/books2.dart';
-import 'package:obsv_flutter/model/booksQuickType.dart';
 
 class ApiService {
   static const String baseUrl = 'www.googleapis.com';
@@ -12,8 +11,8 @@ class ApiService {
 
   final _logger = getLogger('ApiService');
 
-  //working guy
-  // Future getBooks({final genreType = 'computers'}) async {
+  //main working guy
+  // Future<List<Books>> getBooks({final genreType = 'computers'}) async {
   //   try {
   //     final url = Uri.https(baseUrl, books, {'q': 'subject: $genreType'});
   //     final response = await http.get(url);
@@ -86,7 +85,7 @@ class ApiService {
   ///
   ///
   ///
-  ///Demo Instance 1 Experiment 1 -> Working Guy -> Jumping one step off the model
+  ///Demo Instance 3 Experiment 3 -> Working Guy -> Jumping one step off the model
   Future getBooks({final genreType = 'computers'}) async {
     try {
       final url = Uri.https(baseUrl, books, {'q': 'subject:$genreType'});
@@ -112,3 +111,6 @@ class ApiService {
     }
   }
 }
+
+
+//OBSERVATION QuickType.io model is shitty when generating with stacked ...use https://javiercbk.github.io/json_to_dart/

@@ -26,6 +26,9 @@ class BookJavCbk2 {
     data['totalItems'] = totalItems;
     return data;
   }
+
+  @override
+  String toString() => 'BookJavCbk2 ${items![0].volumeInfo!.title} $totalItems';
 }
 
 class Items {
