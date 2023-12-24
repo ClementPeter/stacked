@@ -12,16 +12,21 @@ class ApiService {
   final _logger = getLogger('ApiService');
 
   //main working guy
-  // Future<List<Books>> getBooks({final genreType = 'computers'}) async {
+  // Future getBooks({final genreType = 'computers'}) async {
   //   try {
   //     final url = Uri.https(baseUrl, books, {'q': 'subject: $genreType'});
   //     final response = await http.get(url);
   //     //_logger.i('responseeee::: ${response.body}');
 
-  //     Iterable items = jsonDecode(response.body)['items'];
+  //     final jsonResponse = json.decode(response.body);
+
+  //     final Iterable items = jsonResponse['items'];
   //     _logger.i('itemss::: $items');
 
-  //     return items.map((item) => Books.fromJson(item)).toList();
+  //     final result = items.map((item) => Books.fromJson(item)).toList();
+  //     _logger.i('resultsss::: ${result.runtimeType}');
+
+  //     return result;
   //   } on SocketException {
   //     throw "No Internet Connection";
   //   } catch (e) {
@@ -60,33 +65,44 @@ class ApiService {
   // }
 
   // Demo Experiment 2 -> Working Guy
-  // Future getBooks({final genreType = 'computers'}) async {
-  //   try {
-  //     final url = Uri.https(baseUrl, books, {'q': 'subject: $genreType'});
-  //     final jsonResponse = await http.get(url);
-  //     //_logger.i('responseeee::: ${response.body}');
-  //     Map<String, dynamic> body = jsonDecode(jsonResponse.body);
-
-  //     Iterable items = body['items'];
-  //     _logger.i('itemss::: $items');
-
-  //     final result = items.map((item) => BookJavCbk2.fromJson(item)).toList();
-  //     return result;
-  //   } on SocketException {
-  //     throw "No Internet Connection";
-  //   } catch (e) {
-  //     _logger.i('exception::: $e');
-  //     rethrow;
-  //   }
-  // }
-
-  ///
-  ///
-  ///
-  ///
-  ///
-  ///Demo Instance 3 Experiment 3 -> Working Guy -> Jumping one step off the model
   Future getBooks({final genreType = 'computers'}) async {
+    try {
+      final url = Uri.https(baseUrl, books, {'q': 'subject:$genreType'});
+      final response = await http.get(url);
+      //_logger.i('responseeee::: ${response.body}');
+
+Iterable jsonResponse = json.decode(response.body);
+      // _logger.i('JSONresponseeee::: ${jsonResponse.values}');
+
+      if (jsonResponse.containsKey('items')) {
+        final Iterable items = jsonResponse['items'];
+        //_logger.i('itemss::: $items');
+
+       // final result = items.map((item) => Book.fromJson(item)).toList();
+       final result = jsonResponse.map((e) => Boo)
+        _logger.i('resultss::: $result');
+
+        return result;
+      } else {
+        // Handle the case where "items" key is not present in the response
+        _logger.i('No "items" key found in the response.');
+        return [];
+      }
+    } on SocketException {
+      throw "No Internet Connection";
+    } catch (e) {
+      _logger.i('exception::: $e');
+      rethrow;
+    }
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///Demo Instance Experiment 3 -> Working Guy -> Jumping one step off the model
+  Future getBookss({final genreType = 'computers'}) async {
     try {
       final url = Uri.https(baseUrl, books, {'q': 'subject:$genreType'});
       final response = await http.get(url);
@@ -97,8 +113,10 @@ class ApiService {
       if (jsonResponse.containsKey("items")) {
         final List<dynamic> items = jsonResponse["items"];
         //_logger.i('itemss::: $items');
+
         final result = items.map((item) => Items.fromJson(item)).toList();
         _logger.i('resultsss::: ${result.runtimeType}');
+
         return result;
       } else {
         // Handle the case where "items" key is not present in the response

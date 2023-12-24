@@ -27,8 +27,8 @@ class BookJavCbk2 {
     return data;
   }
 
-  @override
-  String toString() => 'BookJavCbk2 ${items![0].volumeInfo!.title} $totalItems';
+  // @override
+  // String toString() => 'BookJavCbk2 ${items![0].volumeInfo!.title} $totalItems';
 }
 
 class Items {
