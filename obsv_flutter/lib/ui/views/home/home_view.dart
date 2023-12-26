@@ -35,34 +35,15 @@ class HomeView extends StackedView<HomeViewModel> {
                 );
               }
 
-              // return ListView.builder(
-              //   itemCount: viewModel.data?.length,
-              //   itemBuilder: (context, index) {
-              //     final bookData = viewModel.data[index]?.;
-              //     //final bookData = viewModel.data.items[index];
-              //     logger.i('book Dataa:::$bookData');
-              //     return Card(
-              //       child: ListTile(
-              //         onTap: () {},
-              //         title: Text(bookData ?? 'vreerf'),
-
-              //         //title: Text('${bookData.items}'),
-              //       ),
-              //     );
-              //   },
-              // );
-
               return ListView.builder(
                 itemCount: viewModel.data?.length,
                 itemBuilder: (context, index) {
-                  final bookData = viewModel.data[index];
-                  logger.i('book Dataa:::$bookData');
-
-                  ///Text('${bookData.volumeInfo.title}')
+                  final bookData = viewModel.data?[index];
+                  logger.i('book Dataa:::${bookData.volumeInfo.title}');
                   return Card(
                     child: ListTile(
                       onTap: () {},
-                      title: const Text('mom'),
+                      title: Text('${bookData.volumeInfo.title}'),
                     ),
                   );
                 },

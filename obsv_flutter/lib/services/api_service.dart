@@ -69,17 +69,16 @@ class ApiService {
     try {
       final url = Uri.https(baseUrl, books, {'q': 'subject:$genreType'});
       final response = await http.get(url);
-      //_logger.i('responseeee::: ${response.body}');
+      _logger.i('responseeee::: ${response.body}');
 
-Iterable jsonResponse = json.decode(response.body);
-      // _logger.i('JSONresponseeee::: ${jsonResponse.values}');
+      Map<String, dynamic> jsonResponse = json.decode(response.body);
+      //_logger.i('JSONresponseeee::: ${jsonResponse.values}');
 
       if (jsonResponse.containsKey('items')) {
         final Iterable items = jsonResponse['items'];
         //_logger.i('itemss::: $items');
 
-       // final result = items.map((item) => Book.fromJson(item)).toList();
-       final result = jsonResponse.map((e) => Boo)
+        final result = items.map((item) => Items.fromJson(item)).toList();
         _logger.i('resultss::: $result');
 
         return result;
@@ -129,6 +128,5 @@ Iterable jsonResponse = json.decode(response.body);
     }
   }
 }
-
 
 //OBSERVATION QuickType.io model is shitty when generating with stacked ...use https://javiercbk.github.io/json_to_dart/

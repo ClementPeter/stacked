@@ -9,6 +9,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends FutureViewModel {
   final _apiService = locator<ApiService>();
+  final _navigationService = locator<NavigationService>();
 
   final _logger = getLogger('ApiService');
 
