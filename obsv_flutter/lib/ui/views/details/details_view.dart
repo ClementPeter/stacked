@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:obsv_flutter/model/books2.dart';
 import 'package:stacked/stacked.dart';
 
 import 'details_viewmodel.dart';
 
 class DetailsView extends StackedView<DetailsViewModel> {
-  const DetailsView({Key? key}) : super(key: key);
+  final BookJavCbk2 bookDetails;
+  const DetailsView(this.bookDetails, {Key? key}) : super(key: key);
 
   @override
   Widget builder(

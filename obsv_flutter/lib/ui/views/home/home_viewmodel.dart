@@ -2,14 +2,17 @@ import 'package:obsv_flutter/app/app.bottomsheets.dart';
 import 'package:obsv_flutter/app/app.dialogs.dart';
 import 'package:obsv_flutter/app/app.locator.dart';
 import 'package:obsv_flutter/app/app.logger.dart';
+import 'package:obsv_flutter/app/app.router.dart';
+import 'package:obsv_flutter/model/books2.dart';
 import 'package:obsv_flutter/services/api_service.dart';
 import 'package:obsv_flutter/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class HomeViewModel extends FutureViewModel {
+class HomeViewModel extends FutureViewModel with FormStateHelper {
   final _apiService = locator<ApiService>();
   final _navigationService = locator<NavigationService>();
+  final _dialogService = locator<DialogService>();
 
   final _logger = getLogger('ApiService');
 
@@ -20,6 +23,15 @@ class HomeViewModel extends FutureViewModel {
     _logger.i('Data toString: ${data.toString()}');
 
     super.onData(data);
+  }
+
+  navigateToBookDetail({required BookJavCbk2 bookData}) {
+    //correct approach
+    _navigationService.navigateToDetailsView(bookDetails: bookData);
+
+    //Wrong Approach -> Passing the entire app Book data to details view
+    //instead of just the selected book data
+    //_navigationService.navigateToDetailsView(bookDetails: data);
   }
 
   @override
@@ -86,3 +98,4 @@ class HomeViewModel extends FutureViewModel {
 //     return _apiService.getBooks();
 //   }
 // }
+
