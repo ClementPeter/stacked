@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:theme_switch/ui/common/app_colors.dart';
 import 'package:theme_switch/ui/common/ui_helpers.dart';
-
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -38,6 +36,28 @@ class HomeView extends StackedView<HomeViewModel> {
                       onPressed: viewModel.toggleTheme,
                       child: const Text(
                         "Toggle theme",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    verticalSpaceMedium,
+                    MaterialButton(
+                      color: Colors.black,
+                      onPressed: viewModel.toggleTheme,
+                      child: const Text(
+                        "Set Mode : Light theme",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    verticalSpaceMedium,
+                    MaterialButton(
+                      color: Colors.black,
+                      onPressed: viewModel.toggleTheme,
+                      child: const Text(
+                        "Set Mode : Dark theme",
                         style: TextStyle(
                           color: Colors.white,
                         ),

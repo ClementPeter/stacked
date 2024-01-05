@@ -6,20 +6,32 @@ import 'package:theme_switch/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
-//CORE stuff ; check docs for more
-//1 -> add to pubspec.yaml
+// CORE stuff; check docs for more
+// 1 -> add to pubspec.yaml and import package
 
-//1 Initialise ThemeManager
+// 2a Setup stacked theme in app.dart and app.locator.dart
+// Singleton(
+//   classType: ThemeService,
+//   resolveUsing: ThemeService.getInstance,
+// ),
+
+// 2b Register as service locator in app.locator.dart
+// locator.registerSingleton(ThemeService.getInstance());
+
+// 3 Initialise ThemeManager
 // Future main() async {
 //   await ThemeManager.initialise();
 //   runApp(MyApp());
 // }
 
-//2 Wrap with ThemeBuilder
+// 4 Wrap our MaterialApp with "ThemeBuilder" from StackedTheme
 // class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     return ThemeBuilder(
+//      pass in default / custom app theme
+//         lightTheme: ThemeData.light(),
+//          darkTheme: ThemeData.dark(),
 //       builder: (context, regularTheme, darkTheme, themeMode) => MaterialApp(
 //         title: 'Flutter Demo',
 //         theme: regularTheme,
@@ -29,6 +41,13 @@ import 'package:stacked_themes/stacked_themes.dart';
 //       ),
 //     );
 //   }
+// }
+
+// 5 Start playing by calling ur locator in VM and using the various theme methods
+// final _themeService = locator<ThemeService>();
+
+// void toggleTheme() {
+//   _themeService.toggleDarkLightTheme();
 // }
 
 Future<void> main() async {
@@ -47,21 +66,23 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
-        lightTheme: ThemeData.light(),
-        darkTheme: ThemeData.dark(),
-        builder: (context, regularTheme, darkTheme, themeMode) {
-          return MaterialApp(
-            theme: regularTheme,
-            darkTheme: darkTheme,
-            themeMode: themeMode,
-            initialRoute: Routes.startupView,
-            onGenerateRoute: StackedRouter().onGenerateRoute,
-            navigatorKey: StackedService.navigatorKey,
-            navigatorObservers: [
-              StackedService.routeObserver,
-            ],
-          );
-        });
+      defaultThemeMode: ThemeMode.dark,
+      lightTheme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      builder: (context, regularTheme, darkTheme, themeMode) {
+        return MaterialApp(
+          theme: regularTheme,
+          darkTheme: darkTheme,
+          themeMode: themeMode,
+          initialRoute: Routes.startupView,
+          onGenerateRoute: StackedRouter().onGenerateRoute,
+          navigatorKey: StackedService.navigatorKey,
+          navigatorObservers: [
+            StackedService.routeObserver,
+          ],
+        );
+      },
+    );
   }
 }
 
