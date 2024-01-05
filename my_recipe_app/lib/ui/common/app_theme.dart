@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_recipe_app/extension/app_typography.dart';
-import 'package:my_recipe_app/extension/pallete.dart';
+import 'package:my_recipe_app/extension/palette.dart';
 import 'package:my_recipe_app/ui/common/app_colors.dart';
 import 'package:my_recipe_app/ui/common/app_text_styles.dart';
 
