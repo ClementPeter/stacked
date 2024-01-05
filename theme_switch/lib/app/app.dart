@@ -1,3 +1,4 @@
+import 'package:stacked_themes/stacked_themes.dart';
 import 'package:theme_switch/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:theme_switch/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:theme_switch/ui/views/home/home_view.dart';
@@ -16,6 +17,10 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
+    Singleton(
+      classType: ThemeService,
+      resolveUsing: ThemeService.getInstance,
+    ),
     // @stacked-service
   ],
   bottomsheets: [
