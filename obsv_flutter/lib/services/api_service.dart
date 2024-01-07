@@ -15,12 +15,14 @@ class ApiService {
 
   final _logger = getLogger('ApiService');
 
-  //main working guy
+  //  main working guy
   // Future getBooks({final genreType = 'computers'}) async {
   //   try {
   //     final url = Uri.https(baseUrl, books, {'q': 'subject: $genreType'});
   //     final response = await http.get(url);
   //     //_logger.i('responseeee::: ${response.body}');
+
+  //     final jsonResponse = jsonDecode(response.body); //jsonDecode -> BASTARD ERROR
 
   //     final jsonResponse = json.decode(response.body);
 
