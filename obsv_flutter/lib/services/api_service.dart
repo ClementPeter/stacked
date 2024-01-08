@@ -53,7 +53,7 @@ class ApiService {
   //
 
   // //Demo Experiment 1 -> works
-  Future getBooks({final genreType = 'computers'}) async {
+  Future getBooks({required String genreType}) async {
     try {
       final url = Uri.https(baseUrl, books, {'q': 'subject:$genreType'});
       final jsonResponse = await http.get(url);

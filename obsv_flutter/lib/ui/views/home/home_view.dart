@@ -9,10 +9,15 @@
 ///Works with Demo Experiment 1 ApiService
 import 'package:flutter/material.dart';
 import 'package:obsv_flutter/app/app.logger.dart';
+import 'package:obsv_flutter/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'home_viewmodel.dart';
 
-class HomeView extends StackedView<HomeViewModel> {
+@FormView(
+  fields: [FormTextField(name: 'searchTerm')],
+)
+class HomeView extends StackedView<HomeViewModel> with $HomeView {
   const HomeView({Key? key}) : super(key: key);
 
   @override
@@ -48,22 +53,42 @@ class HomeView extends StackedView<HomeViewModel> {
                 );
               }
 
-              return ListView.builder(
-                itemCount: viewModel.data?.length ?? 1,
-                itemBuilder: (context, index) {
-                  final bookData = viewModel.data?[index];
+              return Column(
+                children: [
+                  SearchBar(
+                    controller: searchTermController,
+                    trailing: [
+                      IconButton(
+                        onPressed: () {
+                          viewModel.fetchData();
+                        },
+                        icon: const Icon(Icons.search),
+                      )
+                    ],
+                  ), //Try our seach bar in another demo
+                  // TextFormField(
+                  //   controller: searchTermController,
+                  // ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: viewModel.data?.length ?? 1,
+                    itemBuilder: (context, index) {
+                      final bookData = viewModel.data?[index];
 
-                  String title = bookData?.volumeInfo?.title ?? 'Unknown Title';
+                      String title =
+                          bookData?.volumeInfo?.title ?? 'Unknown Title';
 
-                  return Card(
-                    child: ListTile(
-                      onTap: () {
-                        viewModel.navigateToBookDetail(bookData: bookData);
-                      },
-                      title: Text(title),
-                    ),
-                  );
-                },
+                      return Card(
+                        child: ListTile(
+                          onTap: () {
+                            viewModel.navigateToBookDetail(bookData: bookData);
+                          },
+                          title: Text(title),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               );
             },
           ),
@@ -71,6 +96,22 @@ class HomeView extends StackedView<HomeViewModel> {
       ),
     );
   }
+
+  @override
+  void onViewModelReady(HomeViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+    final logger = getLogger('HomeView');
+    logger.i('onViewModelReady called');
+
+    syncFormWithViewModel(viewModel);
+  }
+
+  //Try this out instead of viewModelREADY
+  // @override
+  // void syncFormWithViewModel(FormStateHelper model) {
+  //   // TODO: implement syncFormWithViewModel
+  //   super.syncFormWithViewModel(model);
+  // }
 
   @override
   HomeViewModel viewModelBuilder(

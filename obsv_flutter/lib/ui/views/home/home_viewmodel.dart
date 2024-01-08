@@ -7,6 +7,7 @@ import 'package:obsv_flutter/model/books.dart';
 //import 'package:obsv_flutter/model/books2.dart';
 import 'package:obsv_flutter/services/api_service.dart';
 import 'package:obsv_flutter/ui/common/app_strings.dart';
+import 'package:obsv_flutter/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -50,18 +51,23 @@ import 'package:stacked_services/stacked_services.dart';
 //   }
 // }
 
+///
+///
+///
+///
+///
+///
 class HomeViewModel extends FutureViewModel with FormStateHelper {
   final _apiService = locator<ApiService>();
   final _navigationService = locator<NavigationService>();
   final _logger = getLogger('ApiService');
 
-  @override
-  void onData(data) {
-    _logger.i('Data set: $data');
-    _logger.i('Data runTimeType: ${data.runtimeType}');
-    _logger.i('Data toString: ${data.toString()}');
+  Future fetchData() async {
+    await initialise();
+  }
 
-    super.onData(data);
+  void bookSearchData() {
+    print(searchTermValue);
   }
 
   Future<void> navigateToBookDetail({required Items bookData}) async {
@@ -71,6 +77,15 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
     //Wrong Approach -> Passing the entire app Book data to details view
     //instead of just the selected book data
     //_navigationService.navigateToDetailsView(bookDetails: data);
+  }
+
+  @override
+  void onData(data) {
+    _logger.i('Data set: $data');
+    _logger.i('Data runTimeType: ${data.runtimeType}');
+    _logger.i('Data toString: ${data.toString()}');
+
+    super.onData(data);
   }
 
   @override
@@ -86,7 +101,8 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
   // }
   @override
   Future futureToRun() {
-    return _apiService.getBooks();
+    _logger.i("futureToRun called");
+    return _apiService.getBooks(genreType: searchTermValue ?? "computers");
   }
 }
 //
