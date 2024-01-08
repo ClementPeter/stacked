@@ -25,7 +25,7 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
     super.onData(data);
   }
 
-  navigateToBookDetail({required BookJavCbk2 bookData}) {
+  void navigateToBookDetail({required BookJavCbk2 bookData}) {
     //correct approach
     _navigationService.navigateToDetailsView(bookDetails: bookData);
 

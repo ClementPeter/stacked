@@ -221,7 +221,6 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
 
               return ListView(
                 //shrinkWrap: true,
-
                 children: [
                   TextField(controller: searchTermsController),
                   ListView.builder(
