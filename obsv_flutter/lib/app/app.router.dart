@@ -7,7 +7,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
-import 'package:obsv_flutter/model/books2.dart' as _i6;
+import 'package:obsv_flutter/model/books.dart' as _i6;
 import 'package:obsv_flutter/ui/views/details/details_view.dart' as _i3;
 import 'package:obsv_flutter/ui/views/home/home_view.dart' as _i4;
 import 'package:obsv_flutter/ui/views/startup/startup_view.dart' as _i2;
@@ -79,7 +79,7 @@ class DetailsViewArguments {
     this.key,
   });
 
-  final _i6.BookJavCbk2 bookDetails;
+  final _i6.Items bookDetails;
 
   final _i5.Key? key;
 
@@ -116,7 +116,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> navigateToDetailsView({
-    required _i6.BookJavCbk2 bookDetails,
+    required _i6.Items bookDetails,
     _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
@@ -161,7 +161,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> replaceWithDetailsView({
-    required _i6.BookJavCbk2 bookDetails,
+    required _i6.Items bookDetails,
     _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
