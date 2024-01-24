@@ -7,6 +7,9 @@ extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
 
   //Easily call the extension w/o referencing context on each instance
-  AppTypography? get typpgraphy => theme.extension<AppTypography>();
+  //AppTypography? get typpgraphy => theme.extension<AppTypography>();
+
+  AppTypography get typography => Theme.of(this).extension();
+  get pallete => Theme.of(this).extension<Palette>();
   Palette? get palette => theme.extension<Palette>();
 }

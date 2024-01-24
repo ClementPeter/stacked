@@ -22,7 +22,8 @@ class Books {
   }
 
   @override
-  String toString() => 'Book $items';
+  // String toString() => 'BookModel $items';
+  String toString() => '$items';
 }
 
 class Items {

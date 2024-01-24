@@ -9,6 +9,7 @@
 ///Works with Demo Experiment 1 ApiService
 import 'package:flutter/material.dart';
 import 'package:obsv_flutter/app/app.logger.dart';
+import 'package:obsv_flutter/model/books.dart';
 import 'package:obsv_flutter/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -47,7 +48,7 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                 //return viewModel.showInternetErrorDialog();
               }
               // Empty
-              if (viewModel.data == null || viewModel.data!.isEmpty) {
+              if (viewModel.data == null) {
                 return const Center(
                   child: Text('No Book info found'),
                 );
@@ -65,25 +66,24 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                         icon: const Icon(Icons.search),
                       )
                     ],
-                  ), //Try our seach bar in another demo
-                  // TextFormField(
-                  //   controller: searchTermController,
-                  // ),
+                  ),
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: viewModel.data?.length ?? 1,
                     itemBuilder: (context, index) {
                       final bookData = viewModel.data?[index];
+                      logger.i('bookData::::${bookData.volumeInfo.title}');
+                      logger.i('data length::::${viewModel.data.length}');
 
-                      String title =
-                          bookData?.volumeInfo?.title ?? 'Unknown Title';
+                      // String title =
+                      //     bookData?.volumeInfo?.title ?? 'Unknown Title';
 
                       return Card(
                         child: ListTile(
                           onTap: () {
-                            viewModel.navigateToBookDetail(bookData: bookData);
+                            //viewModel.navigateToBookDetail(bookData: bookData);
                           },
-                          title: Text(title),
+                          title: Text(bookData.volumeInfo?.title! ?? '--'),
                         ),
                       );
                     },
