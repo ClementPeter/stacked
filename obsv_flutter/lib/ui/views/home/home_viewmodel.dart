@@ -67,7 +67,7 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
   }
 
   void bookSearchData() {
-    print(searchTermValue);
+    _logger.i(searchTermValue);
   }
 
   Future<void> navigateToBookDetail({required Items bookData}) async {
@@ -95,10 +95,6 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
     super.onError(error);
   }
 
-  // @override
-  // Future futureToRun() {
-  //   return _apiService.getActivityfromAPI();
-  // }
   @override
   Future futureToRun() {
     _logger.i("futureToRun called");

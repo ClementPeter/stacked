@@ -9,7 +9,6 @@
 ///Works with Demo Experiment 1 ApiService
 import 'package:flutter/material.dart';
 import 'package:obsv_flutter/app/app.logger.dart';
-import 'package:obsv_flutter/model/books.dart';
 import 'package:obsv_flutter/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -60,8 +59,8 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                     controller: searchTermController,
                     trailing: [
                       IconButton(
-                        onPressed: () {
-                          viewModel.fetchData();
+                        onPressed: () async {
+                          await viewModel.futureToRun();
                         },
                         icon: const Icon(Icons.search),
                       )
@@ -75,13 +74,11 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                       logger.i('bookData::::${bookData.volumeInfo.title}');
                       logger.i('data length::::${viewModel.data.length}');
 
-                      // String title =
-                      //     bookData?.volumeInfo?.title ?? 'Unknown Title';
-
                       return Card(
                         child: ListTile(
                           onTap: () {
                             //viewModel.navigateToBookDetail(bookData: bookData);
+                            viewModel.navigateToBookDetail(bookData: bookData!);
                           },
                           title: Text(bookData.volumeInfo?.title! ?? '--'),
                         ),

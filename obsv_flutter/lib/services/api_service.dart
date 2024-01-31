@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:obsv_flutter/app/app.locator.dart';
 import 'package:obsv_flutter/app/app.logger.dart';
 import 'package:obsv_flutter/model/books.dart'; //swap btwn the 2 models
-//import 'package:obsv_flutter/model/books2.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class ApiService {
@@ -35,16 +34,10 @@ class ApiService {
       //     .toList(); //try this and document result Yayy this worksss
 
       //explicitly
-      final result = items.map(
-        ((e) {
-          //_logger.i('eeee::: $e');
-          return Items.fromJson(e);
-        }),
-      ).toList();
+      final result = items.map(((e) {
+        return Items.fromJson(e);
+      })).toList();
 
-      // final result = items
-      //     .map((e) => Books.fromJson(e['volumeInfo']))
-      //     .toList(); //working instance
       _logger.i('resultsss::: $result');
       return result;
     } on SocketException {

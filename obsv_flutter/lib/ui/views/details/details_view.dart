@@ -18,11 +18,23 @@ class DetailsView extends StackedView<DetailsViewModel> {
       appBar: AppBar(
         title: const Text('Book Details'),
       ),
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-        child: Text(
-          '${bookDetails.volumeInfo?.title}',
-        ),
+      body: ListView(
+        padding: const EdgeInsets.all(15),
+        children: [
+          // Container(
+          //   decoration: BoxDecoration(
+          //     image: DecorationImage(image: NetworkImage(''))
+
+          //   ),
+          // ),
+          const FlutterLogo(),
+          Text(
+            '${bookDetails.volumeInfo?.title}',
+          ),
+          Text(
+            '${bookDetails.volumeInfo?.authors}',
+          ),
+        ],
       ),
     );
   }
