@@ -45,9 +45,19 @@ class ApiService {
         title: "Network Error",
         description: 'No Internet Connection',
       );
-      throw "No Internet Connection";
+      //throw "No Internet Connection";
+    } on NoSuchMethodError {
+      await _dialogService.showDialog(
+        title: "Unknown Error",
+        description: 'Keyword invalid',
+      );
+      //throw "Error fetching book data";
     } on Exception {
-      throw "Error fetching book data";
+      await _dialogService.showDialog(
+        title: "Unknown Error",
+        description: 'Exception invalid',
+      );
+      //throw "Error fetching book data";
     } catch (e) {
       _logger.i('exception::: $e');
       rethrow;

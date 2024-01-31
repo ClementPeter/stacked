@@ -21,6 +21,12 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
   const HomeView({Key? key}) : super(key: key);
 
   @override
+  void onDispose(HomeViewModel viewModel) {
+    disposeForm();
+    super.onDispose(viewModel);
+  }
+
+  @override
   Widget builder(
     BuildContext context,
     HomeViewModel viewModel,
@@ -28,66 +34,105 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
   ) {
     final logger = getLogger('HomeView');
     return Scaffold(
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   toolbarHeight: 50,
+      //   scrolledUnderElevation: 10,
+      //   title: SearchBar(
+      //     controller: searchTermController,
+      //     trailing: [
+      //       IconButton(
+      //         onPressed: () async {
+      //           if (searchTermController.text.isEmpty) {
+      //             return;
+      //           } else {
+      //             await viewModel.fetchData();
+      //           }
+      //         },
+      //         icon: const Icon(Icons.search),
+      //       )
+      //     ],
+      //   ),
+      // ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Builder(
-            builder: (context) {
-              //Loading
-              if (viewModel.isBusy) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              //Error state
-              if (viewModel.hasError) {
-                return Center(
-                  child: Text(viewModel.modelError ?? "No Internet connection"),
-                );
-                //return viewModel.showInternetErrorDialog();
-              }
-              // Empty
-              if (viewModel.data == null) {
-                return const Center(
-                  child: Text('No Book info found'),
-                );
-              }
-
-              return Column(
-                children: [
-                  SearchBar(
-                    controller: searchTermController,
-                    trailing: [
-                      IconButton(
-                        onPressed: () async {
-                          await viewModel.futureToRun();
-                        },
-                        icon: const Icon(Icons.search),
-                      )
-                    ],
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: viewModel.data?.length ?? 1,
-                    itemBuilder: (context, index) {
-                      final bookData = viewModel.data?[index];
-                      logger.i('bookData::::${bookData.volumeInfo.title}');
-                      logger.i('data length::::${viewModel.data.length}');
-
-                      return Card(
-                        child: ListTile(
-                          onTap: () {
-                            //viewModel.navigateToBookDetail(bookData: bookData);
-                            viewModel.navigateToBookDetail(bookData: bookData!);
-                          },
-                          title: Text(bookData.volumeInfo?.title! ?? '--'),
-                        ),
-                      );
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              SearchBar(
+                controller: searchTermController,
+                trailing: [
+                  IconButton(
+                    onPressed: () async {
+                      if (searchTermController.text.isEmpty) {
+                        return;
+                      } else {
+                        await viewModel.fetchData();
+                      }
                     },
-                  ),
+                    icon: const Icon(Icons.search),
+                  )
                 ],
-              );
-            },
+              ),
+              // SizeBox()
+              Center(
+                child: Builder(
+                  builder: (context) {
+                    //Error state
+                    if (viewModel.hasError) {
+                      return Center(
+                        child: Text(
+                            viewModel.modelError ?? "No Internet connection"),
+                      );
+                    }
+                    //Loading
+                    if (viewModel.isBusy) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    // viewModel.hasError
+                    //     ? Text('${viewModel.modelError}')
+                    //     : const Text('No Internet connection');
+
+                    // Empty
+                    if (viewModel.data == null) {
+                      return const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('No Book info found; Pull down to refresh'),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: viewModel.data?.length,
+                          itemBuilder: (context, index) {
+                            final bookData = viewModel.data?[index];
+                            //logger.i('bookData::::${bookData.volumeInfo.title}');
+                            //logger.i('data length::::${viewModel.data.length}');
+
+                            return Card(
+                              child: ListTile(
+                                onTap: () {
+                                  //viewModel.navigateToBookDetail(bookData: bookData);
+                                  viewModel.navigateToBookDetail(
+                                      bookData: bookData!);
+                                },
+                                title:
+                                    Text(bookData.volumeInfo?.title! ?? '--'),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

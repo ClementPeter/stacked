@@ -62,7 +62,7 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
   final _navigationService = locator<NavigationService>();
   final _logger = getLogger('ApiService');
 
-  Future fetchData() async {
+  Future<void> fetchData() async {
     await initialise();
   }
 
@@ -98,7 +98,8 @@ class HomeViewModel extends FutureViewModel with FormStateHelper {
   @override
   Future futureToRun() {
     _logger.i("futureToRun called");
-    return _apiService.getBooks(genreType: searchTermValue ?? "computers");
+    return _apiService.getBooks(
+        genreType: searchTermValue?.trim() ?? "computers");
   }
 }
 //
