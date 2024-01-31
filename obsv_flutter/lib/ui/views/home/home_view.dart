@@ -56,8 +56,9 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
       // ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SearchBar(
                 controller: searchTermController,
@@ -74,8 +75,8 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                   )
                 ],
               ),
-              // SizeBox()
-              Center(
+              const SizedBox(height: 10),
+              Expanded(
                 child: Builder(
                   builder: (context) {
                     //Error state
@@ -87,9 +88,7 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                     }
                     //Loading
                     if (viewModel.isBusy) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return const Center(child: CircularProgressIndicator());
                     }
                     // viewModel.hasError
                     //     ? Text('${viewModel.modelError}')
@@ -104,30 +103,25 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                         ],
                       );
                     }
-                    return Column(
-                      children: [
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: viewModel.data?.length,
-                          itemBuilder: (context, index) {
-                            final bookData = viewModel.data?[index];
-                            //logger.i('bookData::::${bookData.volumeInfo.title}');
-                            //logger.i('data length::::${viewModel.data.length}');
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: viewModel.data?.length,
+                      itemBuilder: (context, index) {
+                        final bookData = viewModel.data?[index];
+                        //logger.i('bookData::::${bookData.volumeInfo.title}');
+                        //logger.i('data length::::${viewModel.data.length}');
 
-                            return Card(
-                              child: ListTile(
-                                onTap: () {
-                                  //viewModel.navigateToBookDetail(bookData: bookData);
-                                  viewModel.navigateToBookDetail(
-                                      bookData: bookData!);
-                                },
-                                title:
-                                    Text(bookData.volumeInfo?.title! ?? '--'),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                        return Card(
+                          child: ListTile(
+                            onTap: () {
+                              //viewModel.navigateToBookDetail(bookData: bookData);
+                              viewModel.navigateToBookDetail(
+                                  bookData: bookData!);
+                            },
+                            title: Text(bookData.volumeInfo?.title! ?? '--'),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),

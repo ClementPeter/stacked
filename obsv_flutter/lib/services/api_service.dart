@@ -45,17 +45,23 @@ class ApiService {
         title: "Network Error",
         description: 'No Internet Connection',
       );
-      //throw "No Internet Connection";
+      throw "SocketException- No Internet Connection";
     } on NoSuchMethodError {
       await _dialogService.showDialog(
         title: "Unknown Error",
-        description: 'Keyword invalid',
+        description: 'NoSuchMethodError - Keyword invalid',
+      );
+      throw "NoSuchMethodErrorError - Keyword invalid";
+    } on TypeError {
+      await _dialogService.showDialog(
+        title: "Unknown Error",
+        description: 'TypeError - Keyword invalid',
       );
       //throw "Error fetching book data";
     } on Exception {
       await _dialogService.showDialog(
         title: "Unknown Error",
-        description: 'Exception invalid',
+        description: 'Exception - Exception invalid',
       );
       //throw "Error fetching book data";
     } catch (e) {
