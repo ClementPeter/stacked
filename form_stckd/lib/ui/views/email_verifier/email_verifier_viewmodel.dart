@@ -1,8 +1,6 @@
 import 'package:stacked/stacked.dart';
 
-class EmailVerifierViewModel extends FormViewModel {
-  void verifyEmail() {}
-}
+class EmailVerifierViewModel extends FormViewModel {}
 
 class EmailVerifierValidator {
   static String? validateEmail(String? value) {
