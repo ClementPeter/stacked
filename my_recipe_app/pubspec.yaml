@@ -42,3 +42,5 @@ flutter:
           weight: 700
         - asset: assets/fonts/Satoshi-Black.otf
           weight: 900
+flutter_intl:
+  enabled: true
