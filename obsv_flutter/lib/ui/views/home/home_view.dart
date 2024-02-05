@@ -34,31 +34,10 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
   ) {
     final logger = getLogger('HomeView');
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   toolbarHeight: 50,
-      //   scrolledUnderElevation: 10,
-      //   title: SearchBar(
-      //     controller: searchTermController,
-      //     trailing: [
-      //       IconButton(
-      //         onPressed: () async {
-      //           if (searchTermController.text.isEmpty) {
-      //             return;
-      //           } else {
-      //             await viewModel.fetchData();
-      //           }
-      //         },
-      //         icon: const Icon(Icons.search),
-      //       )
-      //     ],
-      //   ),
-      // ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SearchBar(
                 controller: searchTermController,
@@ -83,23 +62,32 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                     if (viewModel.hasError) {
                       return Center(
                         child: Text(
-                            viewModel.modelError ?? "No Internet connection"),
+                          viewModel.modelError ?? "No Internet connection",
+                        ),
                       );
-                    }
-                    //Loading
-                    if (viewModel.isBusy) {
-                      return const Center(child: CircularProgressIndicator());
                     }
                     // viewModel.hasError
                     //     ? Text('${viewModel.modelError}')
                     //     : const Text('No Internet connection');
-
+                    //Loading
+                    if (viewModel.isBusy) {
+                      return const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Getting book data'),
+                            SizedBox(height: 10),
+                            CircularProgressIndicator(),
+                          ],
+                        ),
+                      );
+                    }
                     // Empty
                     if (viewModel.data == null) {
                       return const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('No Book info found; Pull down to refresh'),
+                          Text('No Book info found; Click the refresh Icon'),
                         ],
                       );
                     }
@@ -114,9 +102,12 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
                         return Card(
                           child: ListTile(
                             onTap: () {
-                              //viewModel.navigateToBookDetail(bookData: bookData);
                               viewModel.navigateToBookDetail(
-                                  bookData: bookData!);
+                                  bookData: bookData);
+
+                              //Avoid using bang operators as much as possible
+                              // viewModel.navigateToBookDetail(
+                              //     bookData: bookData!);
                             },
                             title: Text(bookData.volumeInfo?.title! ?? '--'),
                           ),
@@ -130,6 +121,11 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => viewModel.fetchData(),
+        mini: true,
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
 
@@ -142,12 +138,14 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
     syncFormWithViewModel(viewModel);
   }
 
-  //Try this out instead of viewModelREADY
-  // @override
-  // void syncFormWithViewModel(FormStateHelper model) {
-  //   // TODO: implement syncFormWithViewModel
-  //   super.syncFormWithViewModel(model);
-  // }
+  //Try this out instead of onViewModelReady
+  @override
+  void syncFormWithViewModel(FormStateHelper model) {
+    // TODO: implement syncFormWithViewModel
+    final logger = getLogger('HomeView');
+    logger.i('syncFormWithViewModel called');
+    super.syncFormWithViewModel(model);
+  }
 
   @override
   HomeViewModel viewModelBuilder(
