@@ -7,6 +7,8 @@ import 'package:my_recipe_app/app/app.router.dart';
 import 'package:my_recipe_app/ui/common/app_theme.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:flutter_localizations/flutter_localizations.dart';
+//import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +38,13 @@ class MainApp extends StatelessWidget {
             navigatorObservers: [
               StackedService.routeObserver,
             ],
+            // localizationsDelegates: [
+            //   S.delegate,
+            //   GlobalMaterialLocalizations.delegate,
+            //   GlobalWidgetsLocalizations.delegate,
+            //   GlobalCupertinoLocalizations.delegate,
+            // ],
+            // supportedLocales: S.delegate.supportedLocales,
           );
         });
   }
